@@ -1,0 +1,16 @@
+{
+  "source": {
+    "include": ["src"],
+    "exclude": ["node_modules", "dist"]
+  },
+  "plugins": [],
+  "templates": {
+    "default": {
+      "outputSourceFiles": true
+    }
+  },
+  "opts": {
+    "recurse": true,
+    "destination": "./docs"
+  }
+}
