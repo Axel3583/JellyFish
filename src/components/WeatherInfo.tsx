@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface WeatherInfoProps {
-label: any;
-value: any;
+label: string;
+value: string;
  
 }
 

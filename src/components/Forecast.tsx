@@ -1,9 +1,9 @@
 import React from 'react'
 
 interface WeatherForecastProps {
-  day: any;
-  icon: any;
-  temperature: any;
+  day: string;
+  icon: string;
+  temperature: string;
   isCurrentDay: boolean; // Ajout de la la prop isCurrentDay
 }
 

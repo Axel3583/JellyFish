@@ -31,7 +31,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onCitySelect, cities }) => {
    * Gère le clic sur une ville dans la liste des résultats de recherche.
    * @param {City} city - La ville sélectionnée.
    */
-  const handleCityClick = (city: any) => {
+  const handleCityClick = (city: City) => {
     onCitySelect(city); // Appelle la fonction de rappel pour sélectionner une ville
     setSearchTerm(""); // Réinitialise le terme de recherche
     setSelectedCity(city); // Met à jour la ville sélectionnée
