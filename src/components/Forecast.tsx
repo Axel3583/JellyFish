@@ -4,7 +4,7 @@ interface WeatherForecastProps {
   day: any;
   icon: any;
   temperature: any;
-  isCurrentDay: boolean; // Ajou de la la prop isCurrentDay
+  isCurrentDay: boolean; // Ajout de la la prop isCurrentDay
 }
 
 const WeatherForecast: React.FC<WeatherForecastProps> = ({

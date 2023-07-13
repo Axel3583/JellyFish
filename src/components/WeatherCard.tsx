@@ -12,10 +12,24 @@ interface WeatherCardProps {
   selectedCity: City | null;
 }
 
+/**
+ * Composant WeatherCard pour afficher les informations météorologiques.
+ * @component
+ * @param {Object} props - Les props du composant.
+ * @param {City | null} props.selectedCity - La ville sélectionnée.
+ */
+
 const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }) => {
   const [weatherData, setWeatherData] = useState<any>(null); // État pour les données météorologiques actuelles
   const [forecastData, setForecastData] = useState<any[]>([]); // État pour les prévisions météorologiques
   const [dataLoaded, setDataLoaded] = useState(false); // État de chargement global
+
+
+    /**
+   * Effectue une requête API pour récupérer les données météorologiques et les prévisions.
+   * @async
+   * @function fetchData
+   */
 
   useEffect(() => {
     const fetchData = async () => {
@@ -64,6 +78,14 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }) => {
     weekday: "long",
   }); // Récupérer le jour de la semaine actuel (ex: "Monday")
 
+
+    /**
+   * Filtre les données de prévision pour obtenir les prévisions des 3 prochains jours.
+   * @function filterForecastData
+   * @param {Object[]} data - Les données de prévision brutes.
+   * @returns {Object[]} Les données de prévision filtrées.
+   */
+  
   const filterForecastData = (data: any[]): any[] => {
     const filteredData: any[] = [];
     const dateMap: Map<string, boolean> = new Map();

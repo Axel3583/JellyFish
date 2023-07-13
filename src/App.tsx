@@ -1,8 +1,8 @@
 import { useState } from "react";
-import SearchBar from "./components/searchBar";
 import { City } from "./models/city";
 import cityData from "./services/data/city.json";
 import WeatherCard from "./components/WeatherCard";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   const [selectedCity, setSelectedCity] = useState<City | null>(null);
