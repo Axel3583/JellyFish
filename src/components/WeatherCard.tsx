@@ -12,10 +12,23 @@ interface WeatherCardProps {
   selectedCity: City | null;
 }
 
-const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }) => {
+/**
+ * Composant WeatherCard pour afficher les informations météorologiques.
+ * @component
+ * @param {Object} props - Les props du composant.
+ * @param {City | null} props.selectedCity - La ville sélectionnée.
+ */
+
+const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }: { selectedCity: City | null; }) => {
   const [weatherData, setWeatherData] = useState<any>(null);
   const [forecastData, setForecastData] = useState<any[]>([]);
   const [dataLoaded, setDataLoaded] = useState(false);
+
+  /**
+   * Effectue une requête API pour récupérer les données météorologiques et les prévisions.
+   * @async
+   * @function fetchData
+   */
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,9 +36,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }) => {
         try {
           const { lat, lon } = selectedCity;
           const forecastResponse = await fetchForecastData(lat, lon);
-          const filteredForecastData = filterForecastData(
-            forecastResponse.list
-          );
+          const filteredForecastData = filterForecastData(forecastResponse.list);
           setForecastData(filteredForecastData);
 
           const weatherResponse = await fetchWeatherData(lat, lon);
@@ -42,9 +53,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }) => {
   }, [selectedCity]);
 
   const temperature = weatherData?.main?.temp;
-  const temperatureCelsius = temperature
-    ? Math.round(temperature - 273.15)
-    : null;
+  const temperatureCelsius = temperature ? Math.round(temperature - 273.15) : null;
   const humidity = weatherData?.main?.humidity;
   const precipitation = weatherData?.main?.pressure;
   const wind = weatherData?.wind?.speed;
@@ -63,6 +72,13 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }) => {
   const dayOfWeek = currentDate.toLocaleDateString("en-US", {
     weekday: "long",
   });
+
+  /**
+   * Filtre les données de prévision pour obtenir les prévisions des 3 prochains jours.
+   * @function filterForecastData
+   * @param {Object[]} data - Les données de prévision brutes.
+   * @returns {Object[]} Les données de prévision filtrées.
+   */
 
   const filterForecastData = (data: any[]): any[] => {
     const filteredData: any[] = [];
@@ -97,9 +113,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }) => {
                 </h3>
                 <div className="flex items-center">
                   <img className="w-5 m-1" src={meteo_neon} alt="Logo" />
-                  {selectedCity && (
-                    <div className="opacity-75">{selectedCity.nm}</div>
-                  )}
+                  {selectedCity && <div className="opacity-75">{selectedCity.nm}</div>}
                 </div>
                 <div className="mt-6">
                   <div className="flex items-center">
