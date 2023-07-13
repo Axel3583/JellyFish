@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import pluie from "../../public/assets/weather-icons/pluie.png";
 import meteo from "../../public/assets/weather-icons/meteo.png";
 import nuage from "../../public/assets/weather-icons/des-nuages.png";
 import meteo_neon from "../../public/assets/weather-icons/meteo-neon.png";

@@ -8,7 +8,7 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({ onCitySelect, cities }) => {
   const [searchTerm, setSearchTerm] = useState(""); // État pour le terme de recherche
-  const [selectedCity, setSelectedCity] = useState<City | null>(null); // État pour la ville sélectionnée
+  const [, setSelectedCity] = useState<City | null>(null); // État pour la ville sélectionnée
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value); // Met à jour le terme de recherche en fonction de la saisie de l'utilisateur
