@@ -19,7 +19,7 @@ interface WeatherCardProps {
  * @param {City | null} props.selectedCity - La ville sélectionnée.
  */
 
-const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }: { selectedCity: City | null; }) => {
+const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }) => {
   const [weatherData, setWeatherData] = useState<any>(null);
   const [forecastData, setForecastData] = useState<any[]>([]);
   const [dataLoaded, setDataLoaded] = useState(false);
