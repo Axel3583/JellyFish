@@ -19,7 +19,7 @@ interface WeatherCardProps {
  * @param {City | null} props.selectedCity - La ville sélectionnée.
  */
 
-const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }) => {
+const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }: { selectedCity: City | null; }) => {
   const [weatherData, setWeatherData] = useState<any>(null);
   const [forecastData, setForecastData] = useState<any[]>([]);
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -36,10 +36,12 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }) => {
         try {
           const { lat, lon } = selectedCity;
           const forecastResponse = await fetchForecastData(lat, lon);
+          console.log(forecastResponse)
           const filteredForecastData = filterForecastData(forecastResponse.list);
           setForecastData(filteredForecastData);
 
           const weatherResponse = await fetchWeatherData(lat, lon);
+          console.log(weatherResponse)
           setWeatherData(weatherResponse);
 
           setDataLoaded(true);
@@ -54,6 +56,23 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }) => {
 
   const temperature = weatherData?.main?.temp;
   const temperatureCelsius = temperature ? Math.round(temperature - 273.15) : null;
+  let icon = null;
+  switch (weatherData?.weather[0]?.icon) {
+    case "01n":
+      icon = nuage;
+      break;
+    case "04n":
+      icon = meteo;
+      break;
+    case "03n":
+        icon = nuage;
+        break;
+    case "02n":
+      icon = meteo_neon;
+      break;
+    default:
+      icon = meteo_neon;
+  }
   const humidity = weatherData?.main?.humidity;
   const precipitation = weatherData?.main?.pressure;
   const wind = weatherData?.wind?.speed;
@@ -101,7 +120,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }) => {
   };
 
   return (
-    <div className="w-full mt-10 px-4 md:px-8 lg:px-16 xl:px-20 justify-center container mx-auto">
+    <div className="w-full mt-10 px-4 md:px-8 lg:px-16 xl:px-20 justify-center container overflow-hidden z-0 relative p-3 mx-auto">
       {selectedCity && dataLoaded ? (
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-1/2 xl:w-1/3">
@@ -112,13 +131,14 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }) => {
                   {formattedDate} {formattedTime}
                 </h3>
                 <div className="flex items-center">
-                  <img className="w-5 m-1" src={meteo_neon} alt="Logo" />
+                  <img className="w-5 m-1" src={icon} alt="Logo" />
+                  
                   {selectedCity && <div className="opacity-75">{selectedCity.nm}</div>}
                 </div>
                 <div className="mt-6">
-                  <div className="flex items-center">
-                    <img className="w-16 h-16 mr-2" src={meteo} alt="Logo" />
-                    <strong className="text-6xl font-semibold leading-none">
+                  <div className="flex items-center pt-30">
+                    <img className="w-20 h-20 mr-3" src={icon} alt="Logo" />
+                    <strong className="text-8xl font-semibold leading-none">
                       {`${temperatureCelsius}°C`}
                     </strong>
                   </div>
@@ -144,7 +164,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }) => {
                         weekday: "short",
                       })}
                       temperature={`${Math.round(forecast.main.temp - 273.15)}°C`}
-                      icon={forecast.weather[0].icon === "10d" ? meteo : nuage}
+                      icon={forecast.weather[0].icon === "01n" ? meteo : nuage}
                       isCurrentDay={index === 0}
                     />
                   ))}
