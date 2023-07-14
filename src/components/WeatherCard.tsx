@@ -36,12 +36,10 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }: { selectedCit
         try {
           const { lat, lon } = selectedCity;
           const forecastResponse = await fetchForecastData(lat, lon);
-          console.log(forecastResponse)
           const filteredForecastData = filterForecastData(forecastResponse.list);
           setForecastData(filteredForecastData);
 
           const weatherResponse = await fetchWeatherData(lat, lon);
-          console.log(weatherResponse)
           setWeatherData(weatherResponse);
 
           setDataLoaded(true);
