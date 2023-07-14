@@ -8,7 +8,6 @@ function App() {
   const [selectedCity, setSelectedCity] = useState<City | null>(null);
 
   const handleCitySelect = (city: City) => {
-    console.log(city);
     setSelectedCity(city);
   };
 
