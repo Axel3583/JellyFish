@@ -173,7 +173,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }: { selectedCit
         </div>
       ) : (
         <div className="flex justify-center items-center h-80">
-          <Dna height={80} width={80} />
+          <Dna height={100} width={100} />
         </div>
       )}
     </div>
