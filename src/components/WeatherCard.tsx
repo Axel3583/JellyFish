@@ -122,7 +122,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }: { selectedCit
       {selectedCity && dataLoaded ? (
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-1/2 xl:w-1/3">
-            <div className="w-full h-96 rounded-3xl bg-auto bg-gradient-to-r from-sky-500 to-indigo-500">
+            <div className="w-full h-96 rounded-3xl bg-auto bg-gradient-to-r from-gray-200 to-gray-500">
               <div className="p-6">
                 <h2 className="text-3xl font-bold pb-1">{dayOfWeek}</h2>
                 <h3 className="pb-2 pl-1 mt-2 text-sm">
@@ -146,7 +146,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }: { selectedCit
           </div>
 
           <div className="w-full lg:w-1/2 xl:w-2/3 flex flex-col ml-0 mt-4 lg:mt-0">
-            <div className="lg:my-3 bg-gradient-to-r from-sky-500 to-indigo-500 m-2.5 text-white p-8 rounded-xl flex-grow">
+            <div className="lg:my-3 bg-gradient-to-r from-gray-300 to-gray-500 m-2.5 text-white p-8 rounded-xl flex-grow">
 
               <div className="mb-8">
                 <WeatherInfo label="Precipitation" value={`${precipitation} mm`} />
