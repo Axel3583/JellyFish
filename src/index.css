@@ -4,10 +4,11 @@
 
 
 body{
-  background-image: url("../public/assets/weather-icons/noa.jpg");
+  background-image: url("../public/assets/cover.svg");
   margin: 0;
   font-family: 'Inconsolata', monospace;
-  background-size: cover;
+  background-size: contain;
   background-attachment: fixed;
   background-repeat: no-repeat;
+  background-position: center center;
 }

@@ -122,7 +122,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }: { selectedCit
       {selectedCity && dataLoaded ? (
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-1/2 xl:w-1/3">
-            <div className="w-full h-96 rounded-lg bg-auto bg-gradient-to-r from-cyan-500 to-blue-500">
+            <div className="w-full h-96 rounded-3xl bg-auto bg-gradient-to-r from-sky-500 to-indigo-500">
               <div className="p-6">
                 <h2 className="text-3xl font-bold pb-1">{dayOfWeek}</h2>
                 <h3 className="pb-2 pl-1 mt-2 text-sm">
@@ -136,9 +136,9 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }: { selectedCit
                 <div className="mt-6">
                   <div className="flex items-center pt-30">
                     <img className="w-20 h-20 mr-3" src={icon} alt="Logo" />
-                    <strong className="text-8xl font-semibold leading-none">
+                    <span className="text-8xl font-semibold leading-none">
                       {`${temperatureCelsius}°C`}
-                    </strong>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -146,7 +146,8 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }: { selectedCit
           </div>
 
           <div className="w-full lg:w-1/2 xl:w-2/3 flex flex-col ml-0 mt-4 lg:mt-0">
-            <div className="lg:my-3 bg-gray-800 m-2.5 text-white p-8 rounded-xl flex-grow">
+            <div className="lg:my-3 bg-gradient-to-r from-sky-500 to-indigo-500 m-2.5 text-white p-8 rounded-xl flex-grow">
+
               <div className="mb-8">
                 <WeatherInfo label="Precipitation" value={`${precipitation} mm`} />
                 <WeatherInfo label="Humidity" value={`${humidity} %`} />
@@ -154,7 +155,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ selectedCity }: { selectedCit
               </div>
 
               <div className="flex flex-col justify-between h-full">
-                <div className="flex text-center pt-2 mb-2 flex-grow">
+                <div className="flex text-center pt-2 mb-2 flex-grow justify-around">
                   {forecastData.map((forecast: any, index: number) => (
                     <WeatherForecast
                       key={index}
