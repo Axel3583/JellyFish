@@ -73,8 +73,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
           <input
             type="text"
             id="search-dropdown"
-            className=" w-64 p-2 pl-8 rounded border border-gray-200 bg-gray-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent"
-            placeholder="Search cities..."
+            className=" w-64 p-2 pl-8 rounded border border-gray-200 bg-gray-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+            placeholder="Search city..."
             value={searchTerm}
             onKeyDown={handleKeyDown}
             onChange={handleInputChange}
@@ -99,11 +99,11 @@ const SearchBar: React.FC<SearchBarProps> = ({
         <ul className="bg-white border-gray-100 w-full mt-2 ">
           {searchTerm && (
             <div className="absolute z-10 w-full md:w-64 mt-2 bg-white border border-gray-300 rounded-lg shadow-lg">
-              <ul className="py-2">
+              <ul className="py-2 max-h-60 overflow-y-auto">
                 {filteredCities.map((city) => (
                   <li
                     key={city.id}
-                    className="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900"
+                    className="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-indigo-300 hover:text-gray-900"
                     onClick={() => handleCityClick(city)}
                   >
                     <svg
