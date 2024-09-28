@@ -24,7 +24,7 @@ const WeatherForecast: React.FC<WeatherForecastProps> = ({
   isCurrentDay,
 }: { day: string; icon: string; temperature: string; isCurrentDay: boolean; }) => {
   return (
-    <div className={`h-24 w-1/6 bg-gradient-to-r from-sky-500 rounded-lg ${isCurrentDay ? 'current-day' : ''}`}>
+    <div className={`h-24 w-1/6 bg-gradient-to-r from-gray-800 rounded-lg ${isCurrentDay ? 'current-day' : ''}`}>
       <div className="text-center pt-2 mb-2">
         <img className="w-5 m-1" src={icon} alt="Logo" />
       </div>
